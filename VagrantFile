@@ -1,0 +1,11 @@
+Vagrant.configure("2") do |config|
+     config.vm.box = "centos/7"
+     config.vm.network "forwarded_port", guest: 8080, host:8081
+
+     config.vm.provision "shell", inline: "sudo yum install java -y"
+
+     config.vm.provision "shell", path: "basics.sh"
+
+     config.vm.provision "shell", path: "jenkinsInstall.sh"
+
+   end
